@@ -1,1 +1,15 @@
-<h2>Hello</h2>
+<table>
+    <thead>
+        <tr>
+            <th>제목</th>
+            <th>작성일자</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="question : ${questionList}">
+            <td th:text>${question.subject}</td>
+            <td th:text>${question.createdAt}</td>
+        </tr>
+    </tbody>
+</table>
