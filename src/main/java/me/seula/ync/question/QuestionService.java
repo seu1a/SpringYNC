@@ -5,6 +5,7 @@ import me.seula.ync.DataNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,16 @@ public class QuestionService {
         } else {
             throw new DataNotFoundException("Question not found");
         }
+    }
+
+    public void create(String subject, String content) {
+        QuestionEntity question = new QuestionEntity();
+
+        question.setSubject(subject);
+        question.setContent(content);
+        question.setCreatedAt(LocalDateTime.now());
+
+        questionRepository.save(question);
     }
 
 }
