@@ -14,7 +14,7 @@ public class AnswerController {
     private final QuestionService questionService;
     private final AnswerService answerService;
 
-    @PostMapping("/answer/{id}")
+    @PostMapping("/create/{id}")
     public String createAnswer(Model model, @PathVariable("id") Integer id, @RequestParam("content") String content) {
         QuestionEntity question = questionService.getQuestion(id);
         answerService.create(question, content);
