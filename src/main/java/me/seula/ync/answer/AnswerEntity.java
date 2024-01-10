@@ -1,8 +1,9 @@
-package me.seula.ync;
+package me.seula.ync.answer;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import me.seula.ync.question.QuestionEntity;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
