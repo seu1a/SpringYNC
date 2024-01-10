@@ -30,7 +30,7 @@ public class QuestionController {
 
     @GetMapping("/create")
     public String questionCreate() {
-        return "question_form.html";
+        return "question_form";
     }
 
     @PostMapping("/create")
