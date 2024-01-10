@@ -1,0 +1,9 @@
+/* CSS는 static 폴더 밑에 넣는다 */
+
+textarea {
+    width: 100%;
+}
+
+input(type=submit) {
+    margin-top: 10px;
+}
