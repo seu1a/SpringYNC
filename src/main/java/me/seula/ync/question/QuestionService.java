@@ -1,7 +1,7 @@
 package me.seula.ync.question;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import me.seula.ync.DataNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +24,7 @@ public class QuestionService {
         if (question.isPresent()) {
             return question.get();
         } else {
-            throw new EntityNotFoundException("Question not found");
+            throw new DataNotFoundException("Question not found");
         }
     }
 
