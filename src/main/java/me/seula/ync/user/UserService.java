@@ -1,7 +1,6 @@
 package me.seula.ync.user;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptEncoder;
 
     public UserEntity create(String username, String email, String password) {
         UserEntity user = new UserEntity();
@@ -17,9 +17,7 @@ public class UserService {
         user.setUsername(username);
         user.setEmail(email);
 
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-        user.setPassword(passwordEncoder.encode(password));
+        user.setPassword(bCryptEncoder.encode(password));
 
         userRepository.save(user);
 
