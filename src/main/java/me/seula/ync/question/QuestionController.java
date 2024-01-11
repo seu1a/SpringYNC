@@ -1,8 +1,10 @@
 package me.seula.ync.question;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,8 +36,14 @@ public class QuestionController {
     }
 
     @PostMapping("/create")
-    public String questionCreate(@RequestParam("subject") String subject, @RequestParam("content") String content) {
-        questionService.create(subject, content);
+    /*
+        BidingResult = Validation의 결과
+    */
+    public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "question_form";
+        }
+        questionService.create(questionForm.getSubject(), questionForm.getContent());
         return "redirect:/question/list";
     }
 
