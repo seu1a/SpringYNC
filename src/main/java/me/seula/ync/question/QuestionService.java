@@ -2,6 +2,9 @@ package me.seula.ync.question;
 
 import lombok.RequiredArgsConstructor;
 import me.seula.ync.DataNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +40,11 @@ public class QuestionService {
         question.setCreatedAt(LocalDateTime.now());
 
         questionRepository.save(question);
+    }
+
+    public Page<QuestionEntity> getList(int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        return questionRepository.findAll(pageable);
     }
 
 }
